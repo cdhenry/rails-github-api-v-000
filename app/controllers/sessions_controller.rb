@@ -21,11 +21,11 @@ class SessionsController < ApplicationController
       {'Accept' => 'application/json'}
     access_hash = JSON.parse(resp.body)
     session[:token] = access_hash["access_token"]
-    binding.pry
-    user_response = Faraday.get "https://api.github.com/user", {}, {
+
+    user_resp = Faraday.get "https://api.github.com/user", {}, {
       'Authorization' => "token #{session[:token]}",
       'Accept' => 'application/json'}
-    user_json = JSON.parse(user_response.body)
+    user_json = JSON.parse(user_resp.body)
     session[:username] = user_json["login"]
 
     redirect_to root_path
