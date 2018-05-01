@@ -1,6 +1,7 @@
 class RepositoriesController < ApplicationController
   def index
     resp = Faraday.get("https://api.github.com/user/repos") do |req|
+      binding.pry
       req.params['access_token'] = session[:token]
     end
     binding.pry
@@ -16,3 +17,4 @@ class RepositoriesController < ApplicationController
     @repos = JSON.parse(resp.body)
   end
 end
+h
