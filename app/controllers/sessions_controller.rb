@@ -7,8 +7,8 @@ class SessionsController < ApplicationController
       client_secret: ENV["GITHUB_SECRET"],
       code: params[:code]},
       {'Accept' => 'application/json'}
-    access_hash = JSON.parse(resp.body)
-    session[:token] = access_hash["access_token"]
+    body = JSON.parse(resp.body)
+    session[:token] = body["access_token"]
 
     user_resp = Faraday.get "https://api.github.com/user", {}, {
       'Authorization' => "token #{session[:token]}",
