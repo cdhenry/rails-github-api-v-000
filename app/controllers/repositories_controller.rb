@@ -8,6 +8,11 @@ class RepositoriesController < ApplicationController
   end
 
   def create
-
+    resp = Faraday.post("https://api.github.com/user/repos") do |req|
+      req.params['oauth_token'] = session[:token]
+      req.params['name'] = params[:name]
+    end
+    binding.pry
+    @repos = JSON.parse(resp.body)
   end
 end
