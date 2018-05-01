@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticate_user
+
   def create
     resp = Faraday.get("https://github.com/login/oauth/access_token") do |req|
       req.params['client_id'] = ENV['GITHUB_ID']
