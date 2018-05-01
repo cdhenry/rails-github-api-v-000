@@ -17,4 +17,3 @@ class RepositoriesController < ApplicationController
     @repos = JSON.parse(resp.body)
   end
 end
-h
