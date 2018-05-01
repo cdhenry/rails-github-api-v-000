@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
       req.params['client_id'] = ENV["GITHUB_ID"]
       req.params['client_secret'] = ENV["GITHUB_SECRET"]
       req.params['code'] = params[:code]
+      Accept: application/json
     end
     binding.pry
     access_hash = JSON.parse(resp.body)
