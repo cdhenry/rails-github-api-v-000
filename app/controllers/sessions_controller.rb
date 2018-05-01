@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
       client_secret: ENV["GITHUB_SECRET"],
       code: params[:code]},
       {'Accept' => 'application/json'}
+    binding.pry
     body = JSON.parse(resp.body)
     session[:token] = body["access_token"]
 
