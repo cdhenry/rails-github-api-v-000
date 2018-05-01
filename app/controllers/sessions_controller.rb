@@ -11,8 +11,7 @@ class SessionsController < ApplicationController
     body = resp.body
     start = body.index("=")
     finish = body.index("&")
-    session[:token] = resp.body[start..finish]
+    session[:token] = resp.body[start-1..finish-1]
     redirect_to root_path
   end
 end
-  
