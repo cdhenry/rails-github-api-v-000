@@ -10,7 +10,7 @@
   <% else %>
     <p>Looks like you don't have any repos on Github yet.</p>
   <% end %>
-  
+
   <%= form_tag("/repositories/create", method: "post") do %>
     <%= label_tag(:name, "Create a New Repo:") %>
     <%= text_field_tag(:name, nil, id: "new-repo") %>
