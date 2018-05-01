@@ -4,7 +4,7 @@ class RepositoriesController < ApplicationController
       'Authorization' => "token #{session[:token]}",
       'Accept' => 'application/json'
     }
-    @repos_array = JSON.parse(response.body)
+    @repos = JSON.parse(response.body)
   end
 
   def create
