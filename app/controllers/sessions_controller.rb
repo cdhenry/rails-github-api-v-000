@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       {'Accept' => 'application/json'}
     access_hash = JSON.parse(resp.body)
     session[:token] = access_hash["access_token"]
-
+    binding.pry
     user_response = Faraday.get "https://api.github.com/user", {}, {
       'Authorization' => "token #{session[:token]}",
       'Accept' => 'application/json'}
