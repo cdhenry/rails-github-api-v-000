@@ -12,5 +12,6 @@ class RepositoriesController < ApplicationController
       req.params['name'] = params[:name]
     end
     @repos = JSON.parse(resp.body)
+    redirect_to repositories_path
   end
 end
