@@ -11,6 +11,7 @@ class RepositoriesController < ApplicationController
       req.params['access_token'] = session[:token]
       req.params['name'] = params[:name]
     end
+    binding.pry
     @repos = JSON.parse(resp.body)
     redirect_to root_path
   end
